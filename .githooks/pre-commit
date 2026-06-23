@@ -1,0 +1,12 @@
+#!/bin/sh
+# Native git hook (core.hooksPath = .githooks). No husky / simple-git-hooks.
+# Checks only the staged files with Biome, then runs the test suite.
+# Skip once with:  SKIP_HOOKS=1 git commit ...
+[ "$SKIP_HOOKS" = "1" ] && { echo "[pre-commit] skipped"; exit 0; }
+
+pnpm exec biome check --staged --no-errors-on-unmatched || {
+  echo "[pre-commit] biome found issues — run 'pnpm check:fix' and re-stage." >&2
+  exit 1
+}
+
+pnpm test

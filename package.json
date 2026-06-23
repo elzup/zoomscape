@@ -49,14 +49,8 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:cov": "vitest run --coverage",
-    "prepare": "simple-git-hooks",
+    "prepare": "git config core.hooksPath .githooks",
     "prepublishOnly": "npm run build && npm test"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged && pnpm test"
-  },
-  "lint-staged": {
-    "*.{ts,js,mjs,json,jsonc}": "biome check --write --no-errors-on-unmatched"
   },
   "files": [
     "lib/"
@@ -68,9 +62,7 @@
     "@types/node": "24.12.0",
     "@vitest/coverage-v8": "^4.0.15",
     "@vitest/ui": "^4.0.15",
-    "lint-staged": "^17.0.8",
     "rimraf": "^6.1.2",
-    "simple-git-hooks": "^2.13.1",
     "typescript": "5.9.3",
     "vitest": "^4.0.15"
   }
