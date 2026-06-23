@@ -1,5 +1,7 @@
 # zoomscape
 
+English | [日本語](./readme.ja.md)
+
 > Decide which scale-ruler units stay visible at a given zoom level / viewport width.
 
 When you draw a ruler, grid, or timeline you usually have several tick tiers
