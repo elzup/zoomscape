@@ -1,6 +1,6 @@
 {
   "name": "zoomscape",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Decide which scale-ruler units stay visible at a given zoom level / viewport width",
   "author": "elzup",
   "license": "MIT",
@@ -49,7 +49,14 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:cov": "vitest run --coverage",
+    "prepare": "simple-git-hooks",
     "prepublishOnly": "npm run build && npm test"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged && pnpm test"
+  },
+  "lint-staged": {
+    "*.{ts,js,mjs,json,jsonc}": "biome check --write --no-errors-on-unmatched"
   },
   "files": [
     "lib/"
@@ -61,7 +68,9 @@
     "@types/node": "24.12.0",
     "@vitest/coverage-v8": "^4.0.15",
     "@vitest/ui": "^4.0.15",
+    "lint-staged": "^17.0.8",
     "rimraf": "^6.1.2",
+    "simple-git-hooks": "^2.13.1",
     "typescript": "5.9.3",
     "vitest": "^4.0.15"
   }
