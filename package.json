@@ -1,0 +1,68 @@
+{
+  "name": "zoomscape",
+  "version": "0.1.0",
+  "description": "Decide which scale-ruler units stay visible at a given zoom level / viewport width",
+  "author": "elzup",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
+  "repository": "elzup/zoomscape",
+  "bugs": {
+    "url": "https://github.com/elzup/zoomscape/issues"
+  },
+  "homepage": "https://github.com/elzup/zoomscape#readme",
+  "keywords": [
+    "zoom",
+    "ruler",
+    "scale",
+    "grid",
+    "timeline",
+    "visibility",
+    "lod"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs && echo '{\"type\": \"commonjs\"}' > lib/cjs/package.json",
+    "build:esm": "tsc --module esnext --outDir lib/esm --moduleResolution node --allowSyntheticDefaultImports",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outDir lib/types",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "test": "vitest run",
+    "bench": "vitest bench --run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:cov": "vitest run --coverage",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "files": [
+    "lib/"
+  ],
+  "sideEffects": false,
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.10",
+    "@elzup/tsconfig": "1.1.0",
+    "@types/node": "24.12.0",
+    "@vitest/coverage-v8": "^4.0.15",
+    "@vitest/ui": "^4.0.15",
+    "rimraf": "^6.1.2",
+    "typescript": "5.9.3",
+    "vitest": "^4.0.15"
+  }
+}
