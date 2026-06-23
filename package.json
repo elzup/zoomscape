@@ -1,6 +1,6 @@
 {
   "name": "zoomscape",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Decide which scale-ruler units stay visible at a given zoom level / viewport width",
   "author": "elzup",
   "license": "MIT",
